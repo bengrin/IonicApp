@@ -26,6 +26,7 @@ angular.module('user.factory', [])
         $state.go('app.tagView');
       }
     })
+    loggedIn = true;
   };
 
   /*
@@ -43,6 +44,7 @@ angular.module('user.factory', [])
         $state.go('app.tagView');
       }
     })
+    loggedIn = true;
   };
 
   /*

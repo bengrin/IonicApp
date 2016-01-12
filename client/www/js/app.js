@@ -11,7 +11,8 @@ angular.module('which', ['ionic',
   'which.controllers.whichInfoCtrl',
   'which.factory',
   'ionic.contrib.ui.tinderCards',
-  'user.factory'
+  'user.factory',
+  'ngCordova'
 ])
 
 .run(function($rootScope, $ionicPlatform, User, $state) {

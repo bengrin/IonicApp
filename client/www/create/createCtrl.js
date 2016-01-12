@@ -1,6 +1,6 @@
-angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.tinderCards'])
+angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.tinderCards','ngFileUpload'])
 
-.controller('CreateCtrl', function($scope, $state, WhichFactory) {
+.controller('CreateCtrl', function($scope, $state, WhichFactory,$cordovaImagePicker,$ionicPlatform,$location,Upload) {
   //sets the options for the "Media Type" drop-down
   $scope.items = [{
     id: 1,
@@ -43,4 +43,46 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
       $scope.data = $scope.originalData;
   });
 
+
+  $scope.collection = {
+    selectedImages : []
+  };
+
+  /*
+  IonicPlatform.ready ensures that the application is fully booted and ready prior to getting access to native features
+   */
+
+  $ionicPlatform.ready(function() {
+
+    $scope.getImage = function() {
+      // Image picker will load images according to these settings
+      var options = {
+        maximumImagesCount: 2, // Max number of selected images
+        width: 50,
+        height: 50,
+        quality: 80            // Higher is better
+      };
+
+      $cordovaImagePicker.getPictures(options).then(function (results) {
+        //If repeated selection, set the scope to an empty array
+        $scope.collection.selectedImages = [];
+
+        // Loop through acquired images
+        for (var i = 0; i < results.length; i++) {
+          console.log('Image URI: ' + results[i]);
+          $scope.collection.selectedImages.push(results[i]);   // We loading only one image so we can use it like this
+        }
+      }, function(error) {
+        console.log('Error: ' + JSON.stringify(error));    // In case of error
+      });
+    };
+
+  });
+
+
+
+
 })
+//window.plugins.Base64.encodeFile($scope.collection.selectedImages[i], function(base64){
+//  $scope.collection.selectedImages.push(base64);
+//});

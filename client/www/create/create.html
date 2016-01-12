@@ -48,5 +48,17 @@
 
     <ion-button class="button button-balanced button-block" ng-click="submit()">Submit Which!</ion-button>
 
+    <div ng-repeat="image in collection.selectedImages">
+      {{image}}
+      <img ng-src="{{image}}" style="width:50%; height: 40%; position: relative; float : left" />
+    </div>
+
+
+
+    <button class="button button-full button-positive" ng-click="getImage()">
+      Get Image
+    </button>
+  </ion-content>
+
   </ion-content>
 </ion-view>
