@@ -10,8 +10,9 @@ angular.module('which', ['ionic',
   'which.controllers.whichesByUser',
   'which.controllers.whichInfoCtrl',
   'which.factory',
-  'ionic.contrib.ui.tinderCards',
+  'which.cloudinaryFactory',
   'user.factory',
+  'ionic.contrib.ui.tinderCards',
   'ngCordova'
 ])
 
@@ -31,7 +32,6 @@ angular.module('which', ['ionic',
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -40,7 +40,7 @@ angular.module('which', ['ionic',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$compileProvider) {
   $stateProvider
 
   //Main app state, contains the logic/views for the menu and login
@@ -168,4 +168,7 @@ angular.module('which', ['ionic',
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
+
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content):|data:image\//);
+
 });
