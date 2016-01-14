@@ -3,6 +3,4 @@ bower_components/
 *.log
 *.floo
 *.flooignore
-build/
-dist/
 .idea/
