@@ -4,7 +4,7 @@
       <h1 class="title">{{data.which.question}}</h1>
     </ion-header-bar>
     <td-cards>
-      <td-card on-swipe-left="decide('a')" on-swipe-right="decide('b')" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" on-snap-back="cardPartialSwipe(0)">
+      <td-card on-destroy="decide()" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" on-snap-back="cardPartialSwipe(0)">
         <div class="image" ng-if="data.type === 'image'">
           <img ng-if="data.cardSrc!==''" ng-src="{{data.cardSrc}}">
         </div>

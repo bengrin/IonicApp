@@ -7,7 +7,7 @@ angular.module('user.factory', [])
 
   var loggedIn = false;
 
-  var apiUrl = 'http://localhost:5007'
+  var apiUrl = 'http://whichwhich.herokuapp.com'
 
   /*
    * Sends login credentials from submit form to server
@@ -16,17 +16,19 @@ angular.module('user.factory', [])
    */
 
   var login = function(credentials) {
-    $http.post(apiUrl + '/api/user/login', credentials).then(function(response) {
-      if (response.data.id !== undefined) {
-        loggedIn = true;
-        window.localStorage.setItem('which.userToken', response.data.id);
-        $ionicHistory.nextViewOptions({
-          historyRoot: true
-        })
-        $state.go('app.tagView');
-      }
-    })
-    loggedIn = true;
+    return $http.post(apiUrl + '/api/user/login', credentials)
+      .then(function(response) {
+        if (response.data.id !== undefined) {
+          loggedIn = true;
+          window.localStorage.setItem('which.userToken', response.data.id);
+          $ionicHistory.nextViewOptions({
+            historyRoot: true
+          })
+        }
+        return response.data;
+      }, function(err) {
+        return err;
+      })
   };
 
   /*
@@ -34,17 +36,19 @@ angular.module('user.factory', [])
    */
 
   var signUp = function(credentials) {
-    $http.post(apiUrl + '/api/user/signup', credentials).then(function(response) {
-      if (response.data.id !== undefined) {
-        loggedIn = true;
-        window.localStorage['which.userToken'] = response.data.id;
-        $ionicHistory.nextViewOptions({
-          historyRoot: true
-        });
-        $state.go('app.tagView');
-      }
-    })
-    loggedIn = true;
+    return $http.post(apiUrl + '/api/user/signup', credentials)
+      .then(function(response) {
+        if (response.data.id !== undefined) {
+          loggedIn = true;
+          window.localStorage['which.userToken'] = response.data.id;
+          $ionicHistory.nextViewOptions({
+            historyRoot: true
+          });
+        }
+        return response.data;
+      }, function(err) {
+        return err;
+      })
   };
 
   /*

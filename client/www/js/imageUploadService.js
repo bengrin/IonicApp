@@ -4,6 +4,12 @@
 
 angular.module('which.cloudinaryFactory', []).factory('ImageUploadService', ius);
 
+/*
+*Promise is generated and returned with the local Image URL and additional data
+ NB the cloudinary account does not receive an API because the current approach uses a direct upload method from angular
+ Authentication has been disabled from cloudinary's side
+ */
+
 function ius($q, $ionicLoading, $cordovaFileTransfer) {
   var service = {};
   service.uploadImage = uploadImage;

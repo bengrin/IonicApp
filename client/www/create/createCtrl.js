@@ -48,22 +48,11 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
     selectedImage : []
   };
 
-  //$scope.urlCollection = []
-  //
-  //$scope.$watch('urlCollection',function(){
-  //  if($scope.urlCollection.length === 2){
-  //    $scope.data.thingA = $scope.urlCollection[0];
-  //    $scope.data.thingA = $scope.urlCollection[1];
-  //  }
-  //
-  //  console.log($scope.data.thingA)
-  //});
-
-
-
   /*
   IonicPlatform.ready ensures that the application is fully booted and ready prior to getting access to native features
+  $cordovaImagePicker gives access to the gallery and on confirmation returns an array of rooth paths to the image
    */
+
 
   $ionicPlatform.ready(function() {
 
@@ -94,6 +83,10 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
     };
 
   });
+
+  /*
+  Service function that returns a promise and assigns generated URLS to thingA || thingB
+   */
 
   function uploadFiles(imageData){
 

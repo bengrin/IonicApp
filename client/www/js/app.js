@@ -107,7 +107,8 @@ angular.module('which', ['ionic',
     url: '/result',
     params: {
       a: null,
-      b: null
+      b: null,
+      choice: null
     },
     views: {
       'menuContent': {
