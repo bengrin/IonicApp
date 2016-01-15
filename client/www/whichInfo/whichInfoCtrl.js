@@ -9,7 +9,8 @@ angular.module('which.controllers.whichInfoCtrl', ['which.factory', 'ionic.contr
     username: window.localStorage.getItem('which.userToken'),
     activeSlide: 1,
     which: $stateParams.which,
-    cardSrc: '',
+    cardSrcA: '',
+    cardSrcB: ''
   };
   console.log($scope.data);
   $scope.data.type = ($scope.data.which.thingA.substring(0,4) === 'http')?'image':'text'
@@ -17,20 +18,27 @@ angular.module('which.controllers.whichInfoCtrl', ['which.factory', 'ionic.contr
   $scope.data.things = [$scope.data.which.thingA, $scope.data.which.question, $scope.data.which.thingB];
 
 
-  $scope.cardPartialSwipe = function(amt) {
-    var threshold = .15;
-    if (amt < 0 - threshold) {
-      $scope.data.cardSrc = $scope.data.which.thingA;
-    } else if (amt > threshold) {
-      $scope.data.cardSrc = $scope.data.which.thingB;
-    } else {
-      $scope.data.cardSrc = '';
-    }
+  //$scope.cardPartialSwipe = function(amt) {
+  //  var threshold = .15;
+  //  if (amt < 0 - threshold) {
+  //    $scope.data.cardSrcA = $scope.data.which.thingA;
+  //  } else if (amt > threshold) {
+  //    $scope.data.cardSrcA = $scope.data.which.thingB;
+  //  } else {
+  //    $scope.data.cardSrc = '';
+  //  }
+  //};
+
+  $scope.showBothCards = function () {
+    $scope.data.cardSrcA = $scope.data.which.thingA;
+    $scope.data.cardSrcB = $scope.data.which.thingB;
+
+    // have possible else to show nothing when screen is reloaded
   };
 
   $scope.back = function() {
     $state.go('app.whichesByUser');
-  }
+  };
 
   $scope.originalData = angular.copy($scope.data);
 
