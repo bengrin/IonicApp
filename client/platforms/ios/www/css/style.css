@@ -1,0 +1,176 @@
+/* Empty. Add your own CSS if you like */
+.thing{
+  width: 95%;
+  height: 95%;
+  padding: 2.5%;
+
+}
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 300px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+.pane{
+  height:1000px;
+  width:100%;;
+}
+
+/* TINDER CARD CSS */
+td-cards {
+  display: block;
+}
+
+td-card {
+  position: absolute;
+  left: 50%;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  margin-left: -150px;
+  width: 300px;
+  height: 300px;
+
+  border: 1px solid #999;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 6px;
+}
+/*
+td-card.card-0 {
+  -webkit-transform: translate3d(0, 0px, 0);
+  transform: translate3d(0, 0px, 0);
+  top: 0px;
+  z-index: 10;
+}
+td-card.card-1 {
+  -webkit-transform: translate3d(0, 4px, 0);
+  transform: translate3d(0, 4px, 0);
+  z-index: 9;
+}
+td-card.card-2 {
+  -webkit-transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, 8px, 0);
+  z-index: 8;
+}
+*/
+
+td-card .image {
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td-card img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.yes-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 30px;
+  color: red;
+  opacity: 0;
+  font-weight: bold;
+}
+.no-text {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: blue;
+  opacity: 0;
+  font-weight: bold;
+}
+
+
+
+.fade {
+  -webkit-transition: 0.2s opacity linear;
+  transition: 0.2s opacity linear;
+  opacity: 0;
+}
+
+.item-select {
+  width: 75%; /* Or whatever you'd like the width to be */
+}
+
+.item-select select {
+  left: 0;
+}
+
+.square {
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+  /*margin:10px;*/
+  background-color: #6addc7;
+  /*overflow:hidden;*/
+}
+
+.content {
+  position:absolute;
+  height:100%; /* = 100% - 2*5% padding */
+  width:100%; /* = 100% - 2*5% padding */
+  padding: 5%;
+  text-align: center;
+  top:-200px;
+
+}
+.table{
+  display:table;
+  width:100%;
+  height:100%;
+}
+.table-cell{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+.bg1{
+ /* you change this to "contain" if you don't want the images to be cropped */
+  flex:1;
+  width: 100%;
+  color: #f7f5ec;
+  background-color: #6dd6ee;
+  font-weight: bold;
+  font-size: large;
+}
+
+.bg2{
+  /* you change this to "contain" if you don't want the images to be cropped */
+  flex:1;
+  width: 100%;
+  color: #f7f5ec;
+  background-color: #17ee5d;
+  font-weight: bold;
+  font-size: large;
+}
+
+.afterCreateHeader{
+  text-align: center;
+  background-color: oldlace;
+  margin: 0 auto;
+  padding:0px;
+  font-family:'sans-serif' ;
+  color: #6d6d6d;
+}
+
+.flexr{
+  display: flex;
+  height: 100%;
+
+}
+.scroll {
+  min-height: 100%;
+  height: 100%;
+}
