@@ -5,7 +5,8 @@ var UserSchema = new mongoose.Schema({
   username: String,
   password: String,
   judgedWhiches: Array,
-  joinedOn : { type: Date, default: Date.now }
+  joinedOn : { type: Date, default: Date.now },
+  friends: [{type: ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model('User', UserSchema);
