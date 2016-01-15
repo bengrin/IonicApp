@@ -40,7 +40,8 @@ angular.module('which', ['ionic',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$compileProvider) {
+.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider,$compileProvider) {
+  $ionicConfigProvider.tabs.position("bottom");
   $stateProvider
 
   //Main app state, contains the logic/views for the menu and login

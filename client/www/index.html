@@ -44,6 +44,26 @@
   </head>
 
   <body ng-app="which">
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view>
+        <ion-tabs class="tabs-stable tabs-icon-top tabs-color-positive" ng-cloak>
+
+          <ion-tab title="search" icon-on="ion-ios-search" icon-off="ion-ios-search" href="#/app/tagView">
+            <ion-nav-view name="tab-brows"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="my wiches" icon-on="ion-navicon" icon-off="ion-navicon" href="#/app/whichesByUser">
+            <ion-nav-view name="tab-mywhiches"></ion-nav-view>
+          </ion-tab>
+         
+          <ion-tab title="new wich" icon-on="ion-plus" icon-off="ion-plus" href="#/app/create">
+            <ion-nav-view name="tab-which"></ion-nav-view>
+          </ion-tab>
+         
+          <ion-tab title="friends" icon-on="ion-person-stalker" icon-off="ion-person-stalker" href="#/app/friends">
+            <ion-nav-view name="tab-friends"></ion-nav-view>
+          </ion-tab>
+         
+        </ion-tabs>
+    </ion-nav-view>
   </body>
 </html>
