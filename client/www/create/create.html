@@ -2,14 +2,11 @@
   <ion-content>
 
     <div class="list">
-      <label class="item item-input item-select">
-        <div class="input-label">
-          &nbsp;
-        </div>
-        <select ng-options="item as item.label for item in items track by item.id" ng-model="data.mediaType"></select>
-      </label>
+        <form>
+          <button class="button button button-positive" ng-click="go('Images')">Images</button>
+          <button class="button button button-positive" ng-click="go('Text')">Text</button>
+        </form>
     </div>
-
     <div class="card">
       <div class="item item-divider">
         Your Question

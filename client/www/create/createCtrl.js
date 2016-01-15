@@ -117,6 +117,12 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
       })
   }
 
-
+  $scope.go = function(page) {
+    if (page === 'Text') {
+       $state.go('app.createText');
+    } else {
+      $state.go('app.create');
+    }
+  }
 })
 

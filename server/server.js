@@ -3,7 +3,7 @@ var express  = require('express'),
     mongoose.Promise = require('bluebird');
 
 var app = express();
-var port = process.env.PORT || 5007;
+var port = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://localhost/testdb');
 

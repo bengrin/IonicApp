@@ -1,0 +1,40 @@
+<ion-view view-title="Create">
+  <ion-content>
+
+    <div class="list">
+        <form>
+          <button class="button button button-positive" ng-click="go('Images')">Images</button>
+          <button class="button button button-positive" ng-click="go('Text')">Text</button>
+        </form>
+    </div>
+
+    <label class="item item-input">
+
+    <input ng-model="data.question" type="text" placeholder="your question">
+
+    </label>
+
+    <label class="item item-input">
+
+    <input type="text" ng-model="data.thingA" placeholder="A">
+
+    </label>
+
+    <h1 class="bar-stable ">or</h1>
+
+    <label class="item item-input">
+
+    <input type="text" ng-model="data.thingB" placeholder="B">
+
+    </label>
+
+    <label class="item item-input">
+
+    <input ng-model="data.tags" type="text" placeholder="tags">
+
+    </label>
+
+    <ion-button class="button button-balanced button-block" ng-click="submit()">Submit Which!</ion-button>
+
+  </ion-content>
+</ion-view>

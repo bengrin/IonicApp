@@ -91,6 +91,16 @@ angular.module('which', ['ionic',
       }
     }
   })
+    //State for viewing the Whiches of a tag
+  .state('app.createText', {
+    url: '/createText',
+    views: {
+      'menuContent': {
+        templateUrl: 'create/createText.html',
+        controller: 'CreateCtrl'
+      }
+    }
+  })
 
   //State for after a Which has been created. Provides confirmation to the user that the Which has been created.
   .state('app.afterCreate', {
