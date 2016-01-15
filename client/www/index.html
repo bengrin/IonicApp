@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -16,6 +17,8 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-ion-tinder-cards/ionic.tdcards.js"></script>
     <script src="lib/collide/collide.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -33,9 +36,11 @@
     <script src="signup/signUpCtrl.js"></script>
     <script src="whichesByUser/whichesByUserCtrl.js"></script>
     <script src="whichInfo/whichInfoCtrl.js"></script>
+    <script src="lib/ng-file-upload/ng-file-upload-all.js"></script>
 
     <script src="js/whichFactory.js"></script>
     <script src="js/userFactory.js"></script>
+    <script src="js/imageUploadService.js"></script>
   </head>
 
   <body ng-app="which">

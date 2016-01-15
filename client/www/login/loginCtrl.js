@@ -10,8 +10,14 @@ angular.module('which.controllers.login', ['which.factory', 'ionic.contrib.ui.ti
   };
 
   $scope.login = function() {
-    User.login($scope.data);
-    $scope.data.message = 'Incorrect credentials';
+    User.login($scope.data).then(function(response) {
+      if(response.id !== undefined) {
+        $state.go('app.tagView');
+      } else {
+        $scope.data.message = 'Incorrect credentials';
+      }
+    });
+
   }
 
   $scope.originalData = angular.copy($scope.data);
@@ -21,7 +27,7 @@ angular.module('which.controllers.login', ['which.factory', 'ionic.contrib.ui.ti
       $scope.data = $scope.originalData;
   });
 
-  $scope.goToSignUp = function(){
+  $scope.goToSignUp = function() {
     $state.go('app.signUp')
   }
 });
