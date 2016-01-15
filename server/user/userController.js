@@ -52,5 +52,58 @@ module.exports = {
       .catch(function(err){
         throw err;
       });
+  },
+
+  /*        Route Handler - POST /api/user/friends
+
+        * Expects an object with the property username
+        * Responds with a 200 status code if successful,
+          and 400 user isn't found
+  */
+
+  addFriend : function(req, res, next){
+    var username = {
+      username: req.body.username
+    };
+    var friend= {
+      username: req.body.friendName
+    }
+
+    User.findOne(username, function (err, foundUser){
+      if (err) throw err;
+      foundUser.friends.push(friend);
+      foundUser.save( function (err) {
+          if (err) console.log(err);
+          res.send(foundUser.toJSON());
+      }); 
+
+    })
+
+
+
+    
+  },
+
+  /*        Route Handler - GET /api/user/friends/:userID
+
+        * Expects no incoming data.
+        * Responds with an array of friends for user
+  */
+
+  getFriends : function (req, res, next) {
+    var user = {
+      username: req.body.username
+    };
+
+    User.findOne(user)
+      .populate('friends')
+      .exec(function (err, user) {
+        if (err) console.log(err);
+        console.log('the users friends are: ' , user.friends);
+        res.status(200).json(user.friends); 
+      });
+
   }
+
+
 };
