@@ -33,7 +33,7 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
     WhichFactory.submit(which);
 
     //Landing page after submission
-    $state.go('app.afterCreate');
+    $state.go('app.whichesByUser');
   }
 
   $scope.originalData = angular.copy($scope.data);
