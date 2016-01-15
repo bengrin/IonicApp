@@ -4,12 +4,12 @@
       <!--<ion-nav-back-button>-->
       <!--</ion-nav-back-button>-->
 
-      <ion-nav-buttons side="left">
+<!--       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" ng-click="modal.show()">
         </button>
-      </ion-nav-buttons>
+      </ion-nav-buttons> -->
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-plus" ng-click="create()">
+        <button ng-if="!notLoggedIn()" class="button button-icon button-clear" ng-click="logOut()">Log out
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
