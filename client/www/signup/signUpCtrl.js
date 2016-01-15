@@ -10,8 +10,13 @@ angular.module('which.controllers.signUp', ['which.factory', 'ionic.contrib.ui.t
   };
 
   $scope.signUp = function() {
-    User.signUp($scope.data);
-    $scope.data.message = 'Username already taken'
+    User.signUp($scope.data).then(function(response) {
+      if(response.id !== undefined) {
+        $state.go('app.tagView');
+      } else {
+        $scope.data.message = 'Username is already taken.';
+      }
+    });
   }
 
   $scope.originalData = angular.copy($scope.data);

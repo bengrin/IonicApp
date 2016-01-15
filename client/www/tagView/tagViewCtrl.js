@@ -10,9 +10,11 @@ angular.module('which.controllers.tagView', ['which.factory', 'ionic.contrib.ui.
   };
 
   $scope.getWhichesByTag = function() {
-    WhichFactory.getWhichesByTag($scope.data.tagSearch).then(function(whiches) {
-      $scope.data.whiches = whiches;
-    })
+    if ($scope.data.tagSearch !== '') {
+      WhichFactory.getWhichesByTag($scope.data.tagSearch).then(function(whiches) {
+        $scope.data.whiches = whiches;
+      })
+    }
   };
 
   $scope.goToWhich = function(id) {

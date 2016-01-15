@@ -3,3 +3,7 @@ bower_components/
 *.log
 *.floo
 *.flooignore
+<<<<<<< HEAD
+=======
+.idea/
+>>>>>>> camera-upload

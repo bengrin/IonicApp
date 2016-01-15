@@ -8,6 +8,7 @@ angular.module('which.controllers.result', ['which.factory', 'ionic.contrib.ui.t
 
     $scope.a = $stateParams.a;
     $scope.b = $stateParams.b;
+    $scope.choice = $stateParams.choice;
 
     //Function displays new which, calling the getNew factory function, and navigating to which page along with the newest which.
     $scope.getNewWhich = function() {

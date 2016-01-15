@@ -9,7 +9,7 @@ angular.module('which.factory', [])
 
   $http.defaults.headers.common.Authorization = 'Bearer' + token;
 
-  var serverURI = 'http://localhost:5007';
+  var serverURI = 'http://whichwhich.herokuapp.com';
 
   /*
    * choose function is called after a decision has been made.
