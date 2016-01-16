@@ -26,8 +26,13 @@ module.exports = function (apiRouter) {
   */
   apiRouter.post( '/user/signup', userController.createUser);
   apiRouter.post( '/user/login', userController.authenticate);
-  apiRouter.get( '/api/user/friends/:userID', userController.getFriends); 
-  apiRouter.post( '/api/user/friends', userController.addFriend); 
+  apiRouter.get('/users', userController.getUsers); 
+
+
+
+
+  apiRouter.get( '/user/friends/:userID', userController.getFriends); 
+  apiRouter.post( '/user/friends', userController.addFriend); 
 
 
   /*   For all dynamic routes containing a :whichID or :tagName,

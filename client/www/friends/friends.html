@@ -1,3 +1,28 @@
-<ion-view view-title="My Friends">
+<ion-view view-title="Friends">
+  <ion-content>
 
+    <div class="card" >
+
+      <div class="item item-divider">
+        Enter a username: <br>
+        <p ng-show="message">Successfully Added Friend!<p>
+      </div>
+      <a class="item item-input">
+        <input type="text" ng-model="data.userSearch" placeholder="Search for friends...">
+      </a>
+      <ion-list>
+        <ion-item ng-show="data.userSearch" ng-repeat="user in users| filter: data.userSearch" ng-click="addFriend(user)">
+          {{user}} 
+        </ion-item>
+      </ion-list>
+
+    </div>
+
+   <!--  <button class="button button-block button-assertive text-right" ng-click="getPotentialFriends()">Test getting users</button> -->
+    <!-- <ion-list>
+      <ion-item ng-repeat="which in data.whiches" ng-click="goToWhich(which.id)">
+        {{which.question}}
+      </ion-item>
+    </ion-list> -->
+  </ion-content>
 </ion-view>

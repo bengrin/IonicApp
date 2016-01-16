@@ -1,6 +1,29 @@
-angular.module('which.controllers.friends', [])
+angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.tinderCards'])
 
 
-  .controller('FriendsCtrl', function($scope, $state, $stateParams) {
+.controller('FriendsCtrl', function($scope, $ionicHistory, $state, User) {
 
-  });
+  // $scope.message= undefined; 
+
+
+
+  var getPotentialFriends= function () {
+    User.getUsers()
+      .then(function (response) {
+        $scope.users= response; 
+      })
+  }
+
+  getPotentialFriends(); 
+
+
+  $scope.addFriend= function (friendName) {
+    User.addFriend(friendName)
+      .then(function (response) {
+        if(response.status===200){ 
+          $scope.message= 'Successfully added!'
+        } 
+      })
+  }
+  
+});
