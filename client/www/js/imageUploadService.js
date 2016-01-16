@@ -33,13 +33,13 @@ function ius($q, $ionicLoading, $cordovaFileTransfer) {
       // Add the Cloudinary "upload preset" name to the headers
       var uploadOptions = {
         params : {
-          'cloud_name' : 'veebuv',
-          'upload_preset': 'fotoload'
+          'cloud_name' : 'dsbmgchwt',
+          'upload_preset': 'yiooxlzl'
         }
       };
       $cordovaFileTransfer
       // Your Cloudinary URL will go here
-        .upload('https://api.cloudinary.com/v1_1/veebuv/image/upload', imageURI, uploadOptions)
+        .upload('https://api.cloudinary.com/v1_1/dsbmgchwt/image/upload', imageURI, uploadOptions)
 
         .then(function(result) {
           // Let the user know the upload is completed
