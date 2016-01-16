@@ -3,8 +3,8 @@
 
     <div class="list">
         <form>
-          <button class="button button button-positive" ng-click="go('Images')">Images</button>
-          <button class="button button button-positive" ng-click="go('Text')">Text</button>
+          <button class="button button button-positive" ng-click="show=true;image=false">Images</button>
+          <button class="button button button-positive" ng-click="show=false;image=true">Text</button>
         </form>
     </div>
     <div class="card">
@@ -16,21 +16,21 @@
       </a>
     </div>
 
-    <div class="card" ng-if="mediaType === 'Text'">
+    <div class="card" ng-hide="show">
       <div class="item item-divider">
         Your first selection :
       </div>
       <a class="item item-input">
-        <input type="text" ng-model="data.thingA" placeholder="A">
+        <input type="text" ng-model="data.thingA" placeholder="First Entry">
       </a>
     </div>
 
-    <div class="card" ng-if="mediaType === 'Text'">
+    <div class="card" ng-hide="show">
       <div class="item item-divider">
         Your second selection :
       </div>
       <a class="item item-input">
-        <input type="text" ng-model="data.thingB" placeholder="B">
+        <input type="text" ng-model="data.thingB" placeholder="Second Entry">
       </a>
     </div>
 
@@ -52,7 +52,7 @@
 
     <!--</div>-->
 
-    <button class="button button-full button-positive" ng-click="getImage()">
+    <button class="button button-full button-positive" ng-hide="image" ng-click="getImage()">
       Upload Images
     </button>
 

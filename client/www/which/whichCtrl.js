@@ -24,7 +24,7 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
 
 
   $scope.cardPartialSwipe = function(amt) {
-    var threshold = .15;
+    var threshold = .05;
     if (amt < 0 - threshold) {
       $scope.data.cardSrc = $scope.data.which.thingA;
       $scope.data.choice = 'a';
