@@ -10,6 +10,7 @@ angular.module('which.factory', [])
   $http.defaults.headers.common.Authorization = 'Bearer' + token;
 
   var serverURI = 'http://whichwhich.herokuapp.com';
+  // var serverURI = 'http://localhost:3000';
 
   /*
    * choose function is called after a decision has been made.
@@ -111,12 +112,23 @@ angular.module('which.factory', [])
       });
   }
 
+  var deleteWhichByID = function(which){
+    return $http.delete(serverURI + '/api/which/' + which.id)
+    .then(function(res) {
+      console.log('deleted');
+    }, function(err) {
+      console.log('test')
+      return err;
+    })
+  }
+
   return {
     choose: choose,
     getNew: getNew,
     submit: submit,
     getWhichesByTag: getWhichesByTag,
     getWhichByID: getWhichByID,
-    getWhichesByUser : getWhichesByUser
+    getWhichesByUser : getWhichesByUser,
+    deleteWhichByID : deleteWhichByID
   }
 });

@@ -216,4 +216,13 @@ module.exports = {
         throw err;
       });
   },
+
+  deleteWhich : function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'DELETE');
+    var whichID = req.body.whichID
+    Which.findByIdAndRemove(whichID, function(err, which){
+      if (err) console.log(err);
+    })
+  },
 };

@@ -7,7 +7,8 @@ angular.module('user.factory', [])
 
   var loggedIn = false;
 
-  var apiUrl = 'http://whichwhich.herokuapp.com'
+  var apiUrl = 'http://whichwhich.herokuapp.com';
+  // var apiUrl = 'http://localhost:3000';
 
   /*
    * Sends login credentials from submit form to server

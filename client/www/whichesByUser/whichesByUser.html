@@ -3,6 +3,9 @@
     <ion-list>
       <ion-item ng-repeat="which in data.whiches" ng-click="goToWhich(which.id)">
         {{which.question}}
+        <ion-option-button style="background:red;color:white;" class="buttton-assertive" ng-click="remove(which)">
+        Delete
+        </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
