@@ -27,7 +27,19 @@ angular.module('which.controllers.tagView', ['which.factory', 'ionic.contrib.ui.
         thingB: which.thingB
       });
     })
-  }
+  };
+
+  $scope.getNewWhich = function() {
+    WhichFactory.getNew().then(function(which) {
+      $state.go('app.which', {
+        id: which[0].id,
+        question: which[0].question,
+        thingA: which[0].thingA,
+        thingB: which[0].thingB
+        //tags: which.tags
+      });
+    });
+  };
 
   $scope.originalData = angular.copy($scope.data);
 
@@ -35,4 +47,5 @@ angular.module('which.controllers.tagView', ['which.factory', 'ionic.contrib.ui.
     if (state === 'app.tagView')
       $scope.data = $scope.originalData;
   });
-})
+});
+
