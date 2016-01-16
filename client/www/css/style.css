@@ -187,3 +187,21 @@ td-card img {
   min-height: 100%;
   height: 100%;
 }
+
+.thumbnailImage {
+  position: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+}
+
+/*.imageInfo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 65%;
+  height: auto;
+}*/
