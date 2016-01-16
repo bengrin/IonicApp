@@ -46,7 +46,16 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
   //This gets called when the user swipes, making a decision with the choice from the user
   $scope.decide = function() {
     WhichFactory.choose($scope.data.choice, $scope.data.which.id, $scope.data.username).then(function(votingResult) {
-      console.log(votingResult)
+      console.log(votingResult);
+      analytics.track('Decide', {
+        cardSrc: $scope.data.cardSrc,
+        choice: $scope.data.choice,
+        whichId: $scope.data.which.id,
+        whichQuestion: $scope.data.which.id,
+        whichThingA: $scope.data.which.thingA,
+        whichThingB: $scope.data.which.thingB,
+        votingResult: votingResult
+      });
 
       //Allows for state change, showing new view, second argument is the params being sent in to display results
       $state.go('app.result', {
