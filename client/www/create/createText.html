@@ -8,31 +8,38 @@
         </form>
     </div>
 
-    <label class="item item-input">
+    <div class="card">
+      <div class="item item-divider">
+        Your Question :
+      </div>
+      <a class="item item-input">
+        <input ng-model="data.question" type="text" placeholder="your question">
+      </a>
+    </div>
 
-    <input ng-model="data.question" type="text" placeholder="your question">
+    <div class="card">
+      <div class="item item-divider">
+        Your Answers :
+      </div>
+      <a class="item item-input">
+        <input type="text" ng-model="data.thingA" placeholder="first answer">
+      </a>
+      <!--<h1 class="bar-stable ">or</h1>-->
+      <a class="item item-input">
+        <input type="text" ng-model="data.thingB" placeholder="second answer">
+      </a>
+    </div>
 
-    </label>
 
-    <label class="item item-input">
+    <div class="card">
+      <div class="item item-divider">
+        Enter all your tags :
+      </div>
+      <a class="item item-input">
+        <input ng-model="data.tags" type="text" placeholder="tags">
+      </a>
+    </div>
 
-    <input type="text" ng-model="data.thingA" placeholder="A">
-
-    </label>
-
-    <h1 class="bar-stable ">or</h1>
-
-    <label class="item item-input">
-
-    <input type="text" ng-model="data.thingB" placeholder="B">
-
-    </label>
-
-    <label class="item item-input">
-
-    <input ng-model="data.tags" type="text" placeholder="tags">
-
-    </label>
 
     <ion-button class="button button-balanced button-block" ng-click="submit()">Submit Which!</ion-button>
 
