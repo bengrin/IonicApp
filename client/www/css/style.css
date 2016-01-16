@@ -79,6 +79,14 @@ td-card .image {
   vertical-align: middle;
 }
 
+td-card .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
 td-card img {
   max-width: 100%;
   border-radius: 6px;
@@ -189,7 +197,7 @@ td-card img {
 }
 
 .thumbnailImage {
-  position: block;
+  top: 50%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
