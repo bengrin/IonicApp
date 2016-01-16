@@ -13,14 +13,12 @@
         </div>
         <h1 align="center" ng-if="data.cardSrc===''">{{data.which.question}}</h1>
         <div data-ng-init="showThumbnails()" >
-          <h1 align="center" ng-if="data.cardSrc===''"> 
+          <h1 align="center" ng-if="data.cardSrc===''">
             <img class="thumbnailImage" ng-if="data.cardSrcA!==''" ng-src="{{data.cardSrcA}}">
-             OR 
+             OR
             <img class="thumbnailImage" ng-if="data.cardSrcB!==''" ng-src="{{data.cardSrcB}}">
           </h1>
         </div>
-        <div class="yes-text">B</div>
-        <div class="no-text">A</div>
       </td-card>
     </td-cards>
   </ion-pane>
