@@ -102,6 +102,7 @@ module.exports = {
     var user = {
       username: req.body.username
     };
+    console.log('get friends: ', user); 
 
     User.findOne(user)
       .populate('friends')

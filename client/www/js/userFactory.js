@@ -129,31 +129,12 @@ angular.module('user.factory', [])
       })
   }
 
-
-
-   /*
-   * Sends friend username to be added to user's friends list
-   */
-
-  var addFriend= function (friend) {
-    var data= {
-      friend: friend,
-      userId: window.localStorage['which.userToken']
-    }
-    return $http.post(apiUrl + '/api/user/friends', data)
-      .then(function(response) {
-        console.log('add friend response', response); 
-        // if (response.data.id !== undefined) {
-        //   loggedIn = true;
-        //   window.localStorage['which.userToken'] = response.data.id;
-        //   $ionicHistory.nextViewOptions({
-        //     historyRoot: true
-        //   });
-        // }
-        return response.data;
-      }, function(err) {
-        return err;
-      })
+  var getFriendsWiches= function () {
+    return $http.get(apiUrl+ '/api/user/friends', {params: {userId: window.localStorage['which.userToken'] }})
+      .then(function(res) {
+        console.log('res.data', res.data); 
+        return res.data;
+      });
   }
 
 
@@ -165,7 +146,8 @@ angular.module('user.factory', [])
     login: login,
     signOut: signOut,
     getUsers: getUsers,
-    addFriend: addFriend
+    addFriend: addFriend,
+    getFriendsWiches: getFriendsWiches
 
   }
 
