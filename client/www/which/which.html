@@ -8,23 +8,23 @@
         <div class="image" ng-if="data.type === 'image'">
           <img ng-if="data.cardSrc!==''" ng-src="{{data.cardSrc}}">
         </div>
-        <div class="image" ng-if="data.type === 'text'">
+        <div class="text" ng-if="data.type === 'text'">
           <h2 ng-if="data.cardSrc!==''">{{data.cardSrc}}</h2>
         </div>
         <h1 align="center" ng-if="data.cardSrc===''">{{data.which.question}}</h1>
-        <div ng-if="data.type === 'image'" data-ng-init="showThumbnails()" >
+        <div ng-if="data.type === 'image' && data.cardSrc===''" data-ng-init="showThumbnails()" class="text">
           <h1 align="center" ng-if="data.cardSrc===''">
             <img class="thumbnailImage" ng-if="data.cardSrcA!==''" ng-src="{{data.cardSrcA}}">
              OR
             <img class="thumbnailImage" ng-if="data.cardSrcB!==''" ng-src="{{data.cardSrcB}}">
           </h1>
         </div>
-        <div ng-if="data.type === 'text'" data-ng-init="showThumbnails()" >
-          <h1 align="center" ng-if="data.cardSrc===''">
+        <div ng-if="data.type === 'text' && data.cardSrc===''" data-ng-init="showThumbnails()" class="text">
+          <!--<h1 align="center" ng-if="data.cardSrc===''">-->
             <h2 ng-if="data.cardSrcA!==''">{{data.cardSrcA}}</h2>
-            OR
+            <h4 style="margin: 15px">OR</h4>
             <h2 ng-if="data.cardSrcB!==''">{{data.cardSrcB}}</h2>
-          </h1>
+          <!--</h1>-->
         </div>
       </td-card>
     </td-cards>
