@@ -36,6 +36,13 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
     }
   };
 
+  $scope.showThumbnails = function () {
+    $scope.data.cardSrcA = $scope.data.which.thingA;
+    $scope.data.cardSrcB = $scope.data.which.thingB;
+
+    // have possible else to show nothing when screen is reloaded
+  };
+
   //This gets called when the user swipes, making a decision with the choice from the user
   $scope.decide = function() {
     WhichFactory.choose($scope.data.choice, $scope.data.which.id, $scope.data.username).then(function(votingResult) {
