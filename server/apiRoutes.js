@@ -18,7 +18,7 @@ module.exports = function (apiRouter) {
   apiRouter.get('/tag/:tagName',        whichController.getWhichByTag);
   apiRouter.get('/tag/:tagName/newest', whichController.getNewestWhichByTag);
 
-
+  apiRouter.delete('/which/:whichID', whichController.deleteWhich)
 
   /*     Routes beginning with /api/user
        See documentation at corresponding

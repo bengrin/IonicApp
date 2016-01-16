@@ -21,5 +21,13 @@ angular.module('which.controllers.whichesByUser', ['which.factory', 'ionic.contr
     })
   }
 
+  $scope.remove = function(which) {
+    console.log('this', which)
+    WhichFactory.deleteWhichByID(which).then(function(err) {
+      console.log(which)
+    })
+    var index = $scope.data.whiches.indexOf(which);
+    $scope.data.whiches.splice(index, 1);
+  }
 
 });
