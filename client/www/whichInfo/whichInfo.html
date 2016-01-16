@@ -9,16 +9,21 @@
         <h4>Votes: {{data.which.thingAVoteCount}}</h4>
         <img class="imageInfo" ng-if="data.cardSrcA!==''" ng-src="{{data.cardSrcA}}">
       </div>
+      <div class="imageInfo" ng-if="data.type === 'text'">
+        <h4>Votes: {{data.which.thingAVoteCount}}</h4>
+        <h2 ng-if="data.cardSrc!==''">{{data.cardSrcA}}</h2>
+      </div>
       <hr>
       <div class="imageInfo" ng-if="data.type === 'image'">
         <h4>Votes: {{data.which.thingBVoteCount}}</h4>
         <img class="imageInfo" ng-if="data.cardSrcB!==''" ng-src="{{data.cardSrcB}}">
       </div>
+      <div class="imageInfo" ng-if="data.type === 'text'">
+        <h4>Votes: {{data.which.thingBVoteCount}}</h4>
+        <h2 ng-if="data.cardSrc!==''">{{data.cardSrcB}}</h2>
+      </div>
     </div>
-    <!--Still need to work with text-->
-    <!--<div class="image" ng-if="data.type === 'text'">-->
-      <!--<h2 ng-if="data.cardSrc!==''">{{data.cardSrc}}</h2>-->
-    <!--</div>-->
+
 
   </ion-pane>
 </ion-view>
