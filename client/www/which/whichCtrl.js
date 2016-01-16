@@ -46,7 +46,7 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
   //This gets called when the user swipes, making a decision with the choice from the user
   $scope.decide = function() {
     WhichFactory.choose($scope.data.choice, $scope.data.which.id, $scope.data.username).then(function(votingResult) {
-      console.log(votingResult, $scope.data.username,$scope.data.which.thingB, $scope.data.which.id);
+      console.log(votingResult);
       analytics.track('Decide', {
         cardSrc: $scope.data.cardSrc,
         choice: $scope.data.choice,
