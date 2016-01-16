@@ -1,6 +1,4 @@
-/**
- * Created by VaibhavNamburi on 10/01/2016.
- */
+
 angular.module('user.factory', [])
 
 .factory('User', function($http, $state, $ionicHistory) {
@@ -8,11 +6,9 @@ angular.module('user.factory', [])
   var loggedIn = false;
 
 
-  // var apiUrl = 'http://whichwhich.herokuapp.com'
+   //var apiUrl = 'http://whichwhich.herokuapp.com'
 
   var apiUrl= 'http://localhost:3000'; 
-
-
 
 
   /*
@@ -30,6 +26,12 @@ angular.module('user.factory', [])
           $ionicHistory.nextViewOptions({
             historyRoot: true
           })
+          analytics.identify(response.data.id, {
+            username: credentials.username
+          });
+         analytics.track('Logged in', {
+            username: credentials.username
+          });
         }
         return response.data;
       }, function(err) {
@@ -50,11 +52,20 @@ angular.module('user.factory', [])
           $ionicHistory.nextViewOptions({
             historyRoot: true
           });
+          analytics.identify(response.data.id, {
+            username: credentials.username
+          });
+         analytics.track('Signed Up', {
+            username: credentials.username,
+            createdAt: Date.now()
+          });
         }
         return response.data;
+
       }, function(err) {
         return err;
       })
+
   };
 
   /*
