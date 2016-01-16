@@ -69,6 +69,8 @@ var buildDefaultWhichQuery = function (req) {
   return query;
 };
 
+
+
 module.exports = {
   selectProperties  : selectProperties,
   defaultWhichProperties : defaultWhichProperties,

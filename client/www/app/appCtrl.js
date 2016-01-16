@@ -12,13 +12,8 @@ angular.module('which.controllers.app', ['which.factory','ionic','ionic.contrib.
       $scope.modal = modal;
     });
 
-    $scope.checkState = function () {
-      return ($state.current.name === 'app.which' || $state.current.name === 'app.result');
-
-    };
-
     $scope.notLoggedIn = function(){
-      return !User.isloggedIn();
+      return !User.isloggedIn()
     };
 
     $scope.logOut = function(){
@@ -48,4 +43,9 @@ angular.module('which.controllers.app', ['which.factory','ionic','ionic.contrib.
       $state.go('app.whichesByUser');
       $scope.modal.hide();
     }
-  });
+
+    $scope.friends = function() {
+      $state.go('app.friends');
+      $scope.modal.hide();
+    }
+  })

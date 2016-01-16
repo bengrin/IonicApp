@@ -166,31 +166,29 @@ angular.module('which', ['ionic',
   })
 
   //State for each which made by user
-  .state('app.whichInfo', {
-    url: '/whichInfo',
-    params: {
-      which: {}
-    },
-    views: {
-      'menuContent': {
-        templateUrl: 'whichInfo/whichInfo.html',
-        controller: 'WhichInfoCtrl'
+    .state('app.whichInfo', {
+      url: '/whichInfo',
+      params: {
+        which: {}
+      },
+      views: {
+        'menuContent': {
+          templateUrl: 'whichInfo/whichInfo.html',
+          controller: 'WhichInfoCtrl'
+        }
       }
-    }
-  })
+    })
 
-  .state('app.friends', {
-    url: '/friends',
-    params: {
-      which: {}
-    },
-    views: {
-      'menuContent': {
-        templateUrl: 'friends/friends.html',
-        controller: 'FriendsCtrl'
+   //State for friends
+    .state('app.friends', {
+      url: '/friends',
+      views: {
+        'menuContent': {
+          templateUrl: 'friends/friends.html',
+          controller: 'FriendsCtrl'
+        }
       }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');

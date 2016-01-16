@@ -62,26 +62,34 @@ module.exports = {
   */
 
   addFriend : function(req, res, next){
-    var username = {
-      username: req.body.username
-    };
+    var userId= {
+      _id: req.body.userId
+    }
     var friend= {
-      username: req.body.friendName
+      username: req.body.friend
     }
 
-    User.findOne(username, function (err, foundUser){
-      if (err) throw err;
-      foundUser.friends.push(friend);
-      foundUser.save( function (err) {
-          if (err) console.log(err);
-          res.send(foundUser.toJSON());
-      }); 
+    User.findOne(friend)
+      .then(function (dbResults){
+        if(!dbResults) res.sendStatus(400); //bad request: that friend isn't in our db!
+        else return dbResults; 
+      })
+      .then(function(friend){
+        User.findOne(userId)
+          .then(function (dbResults) {  
+            if(dbResults.friends.indexOf(friend._id) === -1) {
+              dbResults.friends.push(friend._id);
+              dbResults.save( function (err) {
+                if (err) console.log(err);
+                res.sendStatus(200); //great! friend is now saved
+              });  
+            } else {
+              res.sendStatus(200); //friend already exists
+            }  
+          }); 
+      })
 
-    })
 
-
-
-    
   },
 
   /*        Route Handler - GET /api/user/friends/:userID
@@ -103,6 +111,29 @@ module.exports = {
         res.status(200).json(user.friends); 
       });
 
+  },
+
+
+   /*        Route Handler - GET /api/user/:userId
+
+        * Expects no incoming data.
+        * Responds with an array of users that you can add as a friend
+  */
+
+  getUsers: function (req, res, next) {
+    User.find({_id: {$ne: req.query.userId}})
+      .exec(function (err, users){
+
+        var result= users.reduce(function (usersArr, user){
+          usersArr.push(user.username); 
+          return usersArr; 
+        }, []);
+        console.log('result', result); 
+
+        res.status(200).json(result); 
+
+
+      })
   }
 
 

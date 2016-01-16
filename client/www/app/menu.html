@@ -19,6 +19,10 @@
           <button class="button button-block button-positive" ng-click="browseTags()">
             Browse tags</button>
         </label>
+        <label class="item" ng-if="!notLoggedIn()">
+          <button class="button button-block button-positive" ng-click="friends()">
+            Friends</button>
+        </label>
         <label class="item" ng-if="notLoggedIn()">
           <button class="button button-block button-positive" ng-click="signUp()">
             Sign Up</button>
