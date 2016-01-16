@@ -4,10 +4,9 @@
       <!--<ion-nav-back-button>-->
       <!--</ion-nav-back-button>-->
 
-<!--       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" ng-click="modal.show()">
-        </button>
-      </ion-nav-buttons> -->
+      <ion-nav-buttons side="left">
+        <a ng-if="checkState()" class="button icon-left ion-chevron-left button-clear button-dark" href="#/app/tagView">Back</a>
+      </ion-nav-buttons>
       <ion-nav-buttons side="right">
         <button ng-if="!notLoggedIn()" class="button button-icon button-clear" ng-click="logOut()">Log out
         </button>
