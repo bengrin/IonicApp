@@ -31,7 +31,7 @@ module.exports = function (apiRouter) {
 
 
 
-  apiRouter.get( '/user/friends/:userID', userController.getFriendsWhiches); 
+  apiRouter.get( '/user/friends', userController.getFriendsWhiches); 
   apiRouter.post( '/user/friends', userController.addFriend); 
 
 

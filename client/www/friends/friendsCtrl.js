@@ -27,7 +27,7 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
   }
 
 
-  var getCurrentFriendsWiches= function () {
+  $scope.getFriendsWiches= function () {
     User.getFriendsWiches()
       .then (function (friendsWiches){
         console.log('friends wiches', friendsWiches); 

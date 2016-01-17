@@ -28,21 +28,21 @@ module.exports = {
 
 
 
-  getWhichByFriends : function (req, res, next) {
-    var dbQuery = buildDefaultWhichQuery(req);
-    var resultLimit  = Number(req.query.resultLimit) || 1;
+  // getWhichByFriends : function (req, res, next) {
+  //   var dbQuery = buildDefaultWhichQuery(req);
+  //   var resultLimit  = Number(req.query.resultLimit) || 1;
 
-    Which.find(dbQuery)
-      .sort({createdAt:1}) // oldest first
-      .limit(resultLimit)
-      .then(function(dbResults){
-        res.json( defaultWhichProps(dbResults) );
-      })
-      .catch(function(err){
-        throw err;
-      });
+  //   Which.find(dbQuery)
+  //     .sort({createdAt:1}) // oldest first
+  //     .limit(resultLimit)
+  //     .then(function(dbResults){
+  //       res.json( defaultWhichProps(dbResults) );
+  //     })
+  //     .catch(function(err){
+  //       throw err;
+  //     });
 
-  },
+  // },
 
 
   /*        Route Handler - GET /api/which
