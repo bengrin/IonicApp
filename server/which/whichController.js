@@ -260,4 +260,18 @@ module.exports = {
       if (err) console.log(err);
     })
   },
+
+  getAll : function(req, res, next) {
+    Which.find({}, function(err, whiches) {
+      if (err) console.log(err);
+      var tags = whiches.reduce(function(tags, which) {
+        tags[which.tags] = ++tags[which.tags] || 1;
+        return tags;
+      }, {})
+      var topThree = Object.keys(tags).sort(function(a, b) {
+        return tags[a] < tags[b];
+      }).slice(0,3);
+      res.json(topThree);
+    })
+  }
 };

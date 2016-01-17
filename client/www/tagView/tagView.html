@@ -1,15 +1,15 @@
 <ion-view view-title="Browse Tags">
   <ion-content>
 
-    <button class="button button-calm button-block" ng-click="getNewWhich()">
+<!--     <button class="button button-calm button-block" ng-click="getNewWhich()">
       Answer Random Which
     </button>
-
-    <h1 class="text-center">OR</h1>
+ -->
+    <!-- <h1 class="text-center">OR</h1> -->
 
     <div class="card" >
       <div class="item item-divider">
-        Enter a tag label:
+        Find which by tag:
       </div>
       <a class="item item-input">
         <input type="text" ng-model="data.tagSearch" placeholder="Search for tags...">
@@ -17,12 +17,26 @@
     </div>
 
     <button class="button button-block button-assertive text-right" ng-click="getWhichesByTag()">Search</button>
+    <button class="button button-calm button-block" ng-click="getNewWhich()">
+      Answer Random Which
+    </button>
 
+<div class="card">
+  <div class="item item-divider">
+        Top tags:
+      </div>
+  <ion-list>
+    <ion-item ng-repeat="tag in data.top" ng-click="getWhichesByTag(tag)">
+  {{tag}}
+    </ion-item>
+  </ion-list>
+</div>
 
 <ion-list>
   <ion-item ng-repeat="which in data.whiches" ng-click="goToWhich(which.id)">
     {{which.question}}
   </ion-item>
 </ion-list>
+
 </ion-content>
 </ion-view>
