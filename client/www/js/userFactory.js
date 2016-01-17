@@ -6,7 +6,7 @@ angular.module('user.factory', [])
   var loggedIn = false;
 
 
-   //var apiUrl = 'http://whichwhich.herokuapp.com'
+  // var apiUrl = 'http://whichwhich.herokuapp.com'
 
   var apiUrl= 'http://localhost:3000'; 
 
@@ -23,6 +23,7 @@ angular.module('user.factory', [])
         if (response.data.id !== undefined) {
           loggedIn = true;
           window.localStorage.setItem('which.userToken', response.data.id);
+          window.localStorage.setItem('which.username', credentials.username);
           $ionicHistory.nextViewOptions({
             historyRoot: true
           })
