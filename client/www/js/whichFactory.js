@@ -144,6 +144,15 @@ angular.module('which.factory', [])
 
   }
 
+  var getTags = function() {
+    return $http.get(serverURI + '/api/tags')
+      .then(function(res) {
+        return res.data
+      }, function(err) {
+        console.log(err)
+      })
+  }
+
   return {
     choose: choose,
     getNew: getNew,
@@ -151,6 +160,7 @@ angular.module('which.factory', [])
     getWhichesByTag: getWhichesByTag,
     getWhichByID: getWhichByID,
     getWhichesByUser : getWhichesByUser,
-    deleteWhichByID : deleteWhichByID
+    deleteWhichByID : deleteWhichByID,
+    getTags : getTags
   }
 });

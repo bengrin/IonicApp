@@ -5,12 +5,25 @@ angular.module('which.controllers.tagView', ['which.factory', 'ionic.contrib.ui.
 
   $scope.data = {
     tagSearch: '',
-    tags: []
+    tags: [],
+    top: []
 
   };
 
-  $scope.getWhichesByTag = function() {
-    if ($scope.data.tagSearch !== '') {
+  $scope.$on('$ionicView.afterEnter', function() {
+    WhichFactory.getTags().then(function(tags) {
+      $scope.data.top = tags
+      console.log(tags);
+    })
+  });
+
+  $scope.getWhichesByTag = function(tag) {
+    if (tag) {
+      WhichFactory.getWhichesByTag(tag).then(function(whiches){
+        $scope.data.whiches = whiches;
+      })
+    }
+    else if ($scope.data.tagSearch !== '') {
       WhichFactory.getWhichesByTag($scope.data.tagSearch).then(function(whiches) {
         $scope.data.whiches = whiches;
       })
