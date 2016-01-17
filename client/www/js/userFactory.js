@@ -138,9 +138,6 @@ angular.module('user.factory', [])
       });
   }
 
-
-
-
   return {
     isloggedIn: isloggedIn,
     signUp: signUp,
