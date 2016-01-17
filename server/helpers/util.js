@@ -69,10 +69,15 @@ var buildDefaultWhichQuery = function (req) {
   return query;
 };
 
+// var buildFriendsWhichesQuery= function (friends) {
+
+
+// }
 
 
 module.exports = {
   selectProperties  : selectProperties,
   defaultWhichProperties : defaultWhichProperties,
   buildDefaultWhichQuery : buildDefaultWhichQuery
+  // buildFriendsWhichesQuery: buildFriendsWhichesQuery
 };

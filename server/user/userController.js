@@ -1,5 +1,12 @@
+var mongoose = require('mongoose');
+
 var User = require('./userModel.js'),
-    bluebird = require('bluebird');
+    bluebird = require('bluebird'),
+    Which    = require('../which/whichModel.js'),
+    util     = require('../helpers/util.js'); 
+
+var buildDefaultWhichQuery = util.buildDefaultWhichQuery; 
+
 
 
 module.exports = {
@@ -99,20 +106,64 @@ module.exports = {
   */
 
   getFriendsWhiches : function (req, res, next) {
-    var user = {
-      username: req.body.username
+    var userId = {
+      _id: req.query.userId
     };
-    console.log('get friends: ', user); 
+    console.log('who am i: ', userId); 
 
-    User.findOne(user)
+    User.findOne(userId)
       .populate('friends')
-      .exec(function (err, user) {
-        if (err) console.log(err);
-        console.log('the users friends are: ' , user.friends);
-        res.status(200).json(user.friends); 
-      });
+      .then(function (dbResults){
+        if(!dbResults) res.sendStatus(400); //bad request: that user doesn't exist
+        else return dbResults.friends; 
+      })
+      .then (function (friends) {
+        console.log('friends', friends); 
+        var friendsIds= friends.map(function(friend) {
+          return  mongoose.Types.ObjectId(friend._id);
+        })
+        console.log('friendsIds', friendsIds); 
+        var friendsQry= {
+          'createdBy': {$in: friendsIds}
+        }
+
+        Which.find(friendsQry)
+          .sort({createdBy: 1, createdAt: -1}) //asc order of friends, newest whiches first
+          .limit(100)
+          .then(function (dbResults){
+            console.log('friends whiches', dbResults); 
+            res.status(200).json(dbResults); 
+          })
+          .catch(function (err){
+            throw err; 
+          })
+      })
+      // .exec(function (err, user) {
+      //   if (err) console.log(err);
+      //   console.log('the users friends are: ' , user.friends);
+      //   //instead of responding, need to kick off a call to the which controller
+      //   res.status(200).json(user.friends); 
+      // });
 
   },
+
+  //example of how to get a whiches for a specific userId
+  // getWhich : function (req, res, next) {
+  //   var dbQuery = buildDefaultWhichQuery(req);
+  //   var resultLimit  = Number(req.query.resultLimit) || 1;
+
+  //   Which.find(dbQuery)
+  //     .sort({createdAt:1}) // oldest first
+  //     .limit(resultLimit)
+  //     .then(function(dbResults){
+  //       res.json( defaultWhichProps(dbResults) );
+  //     })
+  //     .catch(function(err){
+  //       throw err;
+  //     });
+
+
+
 
 
    /*        Route Handler - GET /api/user/:userId
