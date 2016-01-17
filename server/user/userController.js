@@ -98,7 +98,7 @@ module.exports = {
         * Responds with an array of friends for user
   */
 
-  getFriends : function (req, res, next) {
+  getFriendsWhiches : function (req, res, next) {
     var user = {
       username: req.body.username
     };

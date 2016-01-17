@@ -34,5 +34,7 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
         $scope.friendsWiches= friendsWiches;
       })
   }
+
+ 
   
 });
