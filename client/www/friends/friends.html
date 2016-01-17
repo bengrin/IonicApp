@@ -19,10 +19,15 @@
     </div>
 
     <button class="button button-block button-assertive text-right" ng-click="getFriendsWiches()">Get your friends Whiches</button>
-    <!-- <ion-list>
-      <ion-item ng-repeat="which in data.whiches" ng-click="goToWhich(which.id)">
-        {{which.question}}
+    <ion-list>
+      <ion-item ng-repeat="friend in friends" >
+        <ion-item ng-click="storeId(friend.id)"> {{friend.username}}
+        </ion-item>
       </ion-item>
-    </ion-list> -->
+      <ion-item ng-show= "storedId" ng-repeat="which in friendsWhiches |filter : storedId" ng-click="goToWhich(which._id)">
+        {{which.question}} 
+      </ion-item>
+    </ion-list>
+      
   </ion-content>
 </ion-view>
