@@ -77,6 +77,7 @@ td-card .image {
   position: relative;
   text-align: center;
   vertical-align: middle;
+
 }
 
 td-card .text {
@@ -90,6 +91,8 @@ td-card .text {
 td-card img {
   max-width: 100%;
   border-radius: 6px;
+  width: 300px;
+  height: 500px;
 }
 
 .yes-text {
