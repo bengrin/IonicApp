@@ -47,6 +47,7 @@ module.exports = {
         * Responds with a 201 status code if successful,
           and 401 if the credentials are invalid
   */
+
   authenticate : function(req, res, next){
     var username = req.body.username;
     var password = req.body.password;
@@ -119,6 +120,12 @@ module.exports = {
       })
       .then (function (friends) {
         console.log('friends', friends); 
+        var uniqueFriends= friends.reduce(function (unique, friend) {
+          unique.push({id: friend._id, username: friend.username});
+          return unique;  
+        }, []); 
+        console.log('unique friends', uniqueFriends); 
+
         var friendsIds= friends.map(function(friend) {
           return  mongoose.Types.ObjectId(friend._id);
         })
@@ -132,7 +139,11 @@ module.exports = {
           .limit(100)
           .then(function (dbResults){
             console.log('friends whiches', dbResults); 
-            res.status(200).json(dbResults); 
+            var results= {
+              whiches: dbResults,
+              uniqueFriends: uniqueFriends
+            }
+            res.status(200).json(results); 
           })
           .catch(function (err){
             throw err; 
