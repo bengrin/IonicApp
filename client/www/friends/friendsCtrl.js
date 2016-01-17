@@ -1,11 +1,8 @@
 angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.tinderCards'])
 
 
-.controller('FriendsCtrl', function($scope, $ionicHistory, $state, User) {
-
-  // $scope.message= undefined; 
-
-
+.controller('FriendsCtrl', function($scope, $ionicHistory, $state, User, WhichFactory) {
+  $scope.filters = {};
 
   var getPotentialFriends= function () {
     User.getUsers()
@@ -31,8 +28,21 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
     User.getFriendsWiches()
       .then (function (friendsWiches){
         console.log('friends wiches', friendsWiches); 
-        $scope.friendsWiches= friendsWiches;
+        $scope.friends= friendsWiches.uniqueFriends;
+        $scope.friendsWhiches= friendsWiches.whiches;
       })
+  }
+
+  $scope.storeId= function (id){
+    $scope.storedId= id; 
+  }
+
+  $scope.goToWhich = function(id) {
+    console.log('id', id); 
+    WhichFactory.getWhichByID(id).then(function(which) {
+      console.log(which);
+      $state.go('app.whichInfo', {which: which});
+    })
   }
 
  
