@@ -1,6 +1,3 @@
-/**
- * Created by VaibhavNamburi on 11/01/2016.
- */
 angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.tinderCards'])
 
 
@@ -47,6 +44,7 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
   $scope.decide = function() {
     WhichFactory.choose($scope.data.choice, $scope.data.which.id, $scope.data.username).then(function(votingResult) {
       console.log(votingResult);
+      //tracking user's decisions
       analytics.track('Decide', {
         cardSrc: $scope.data.cardSrc,
         choice: $scope.data.choice,
@@ -54,7 +52,9 @@ angular.module('which.controllers.which', ['which.factory', 'ionic.contrib.ui.ti
         whichQuestion: $scope.data.which.id,
         whichThingA: $scope.data.which.thingA,
         whichThingB: $scope.data.which.thingB,
-        votingResult: votingResult
+        votesForA: votingResult.votesForA,
+        votesForB: votingResult.votesForB,
+        username: window.localStorage.getItem('which.username')
       });
 
       //Allows for state change, showing new view, second argument is the params being sent in to display results

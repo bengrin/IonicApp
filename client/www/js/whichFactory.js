@@ -1,6 +1,3 @@
-/**
- * Created by VaibhavNamburi on 8/01/2016.
- */
 angular.module('which.factory', [])
 
 .factory('WhichFactory', function($http) {
@@ -79,6 +76,11 @@ angular.module('which.factory', [])
         }
       })
       .then(function(res) {
+        analytics.track('Searched Tag', {
+          tag: tag,
+          username: window.localStorage.getItem('which.username'),
+          userID: window.localStorage.getItem('which.userToken')
+        });
         return res.data;
       }, function(err) {
         return err;
