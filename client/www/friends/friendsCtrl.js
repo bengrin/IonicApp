@@ -41,7 +41,6 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
   $scope.getFriendsWiches= function () {
     User.getFriendsWiches()
       .then (function (friendsWiches){
-        console.log('friends wiches', friendsWiches); 
         $scope.friends= friendsWiches.uniqueFriends;
         $scope.friendsWhiches= friendsWiches.whiches;
       })
