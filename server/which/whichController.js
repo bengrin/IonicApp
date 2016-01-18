@@ -147,7 +147,8 @@ module.exports = {
       tags: data.tags,
       type : data.type,
       thingA : data.thingA, // either string of text, or url to resource
-      thingB : data.thingB
+      thingB : data.thingB,
+      friendsOnly: data.friendsOnly
     };
 
     Which(newWhich).save()
