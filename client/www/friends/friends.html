@@ -4,17 +4,22 @@
     <div class="card" >
 
       <div class="item item-divider">
-        Enter a username: <br>
-        <p ng-show="message">Successfully Added Friend!<p>
+        Add A Friend: <br>
+        <p ng-show="message">{{message}}<p>
       </div>
+
       <a class="item item-input">
-        <input type="text" ng-model="data.userSearch" placeholder="Search for friends...">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="userSearch" placeholder="Username...">
       </a>
       <ion-list>
-        <ion-item ng-show="data.userSearch" ng-repeat="user in users| filter: data.userSearch" ng-click="addFriend(user)">
+
+        <ion-item ng-show="userSearch" ng-repeat="user in users| filter: userSearch">
           {{user}} 
+          <button class= "button button-balanced" ng-click="addFriend(user)">Add!</button>
         </ion-item>
       </ion-list>
+
 
     </div>
 
@@ -22,6 +27,7 @@
     <ion-list>
       <ion-item ng-repeat="friend in friends" >
         <ion-item ng-click="storeId(friend.id)"> {{friend.username}}
+        <button class="button button-calm" ng-click="removeFriend(friend.id)">Remove from Friends</button>
         </ion-item>
       </ion-item>
       <ion-item ng-show= "storedId" ng-repeat="which in friendsWhiches |filter : storedId" ng-click="goToWhich(which._id)">

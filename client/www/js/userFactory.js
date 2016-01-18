@@ -94,10 +94,8 @@ angular.module('user.factory', [])
    * Gets all the other users, except for the currently logged in user
    */
    var getUsers = function() {
-    console.log('local storage: ', window.localStorage['which.userToken']); 
     return $http.get(apiUrl+ '/api/users', {params: {userId: window.localStorage['which.userToken'] }})
       .then(function(res) {
-        console.log('res.data', res.data); 
         return res.data;
       }); 
   };
@@ -116,14 +114,20 @@ angular.module('user.factory', [])
     }
     return $http.post(apiUrl + '/api/user/friends', data)
       .then(function(response) {
-        console.log('add friend response', response); 
-        // if (response.data.id !== undefined) {
-        //   loggedIn = true;
-        //   window.localStorage['which.userToken'] = response.data.id;
-        //   $ionicHistory.nextViewOptions({
-        //     historyRoot: true
-        //   });
-        // }
+        return response.data;
+      }, function(err) {
+        return err;
+      })
+  }
+
+  var removeFriend= function (friendId) {
+
+    var data= {
+      friendId: friendId,
+      userId: window.localStorage['which.userToken']
+    }
+    return $http.post(apiUrl + '/api/user/friend', data)
+      .then(function(response) {
         return response.data;
       }, function(err) {
         return err;
@@ -133,7 +137,6 @@ angular.module('user.factory', [])
   var getFriendsWiches= function () {
     return $http.get(apiUrl+ '/api/user/friends', {params: {userId: window.localStorage['which.userToken'] }})
       .then(function(res) {
-        console.log('res.data', res.data); 
         return res.data;
       });
   }
@@ -145,7 +148,8 @@ angular.module('user.factory', [])
     signOut: signOut,
     getUsers: getUsers,
     addFriend: addFriend,
-    getFriendsWiches: getFriendsWiches
+    getFriendsWiches: getFriendsWiches,
+    removeFriend: removeFriend
 
   }
 

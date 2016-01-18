@@ -33,7 +33,8 @@ module.exports = function (apiRouter) {
 
 
   apiRouter.get( '/user/friends', userController.getFriendsWhiches); 
-  apiRouter.post( '/user/friends', userController.addFriend); 
+  apiRouter.post( '/user/friends', userController.addFriend);
+  apiRouter.post('/user/friend', userController.deleteFriend);  
 
 
   /*   For all dynamic routes containing a :whichID or :tagName,

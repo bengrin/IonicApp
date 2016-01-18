@@ -96,7 +96,34 @@ module.exports = {
             }  
           }); 
       })
+  },
 
+
+  /*        Route Handler - POST /api/user/friend
+
+        * Expects an object with the properties userId, and friendId
+        * Responds with a 200 status code if successful,
+          and 400 if user can't be found
+  */
+
+  deleteFriend : function(req, res, next){
+    var userId= {
+      _id: req.body.userId
+    }
+
+    User.findOneAndUpdate(userId)
+      .then (function (dbResults){
+        if(!dbResults) res.sendStatus(400); //bad request: couldn't delete friend
+        dbResults.friends.some(function (friendId, idx)  {
+          if(String(friendId)=== String(req.body.friendId)) {
+            dbResults.friends.splice(idx,1); 
+            dbResults.save(); 
+            return true;
+          }
+          return false; 
+        })
+        res.sendStatus(200); //friend is now deleted
+      })
 
   },
 
