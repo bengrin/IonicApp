@@ -14,9 +14,9 @@
       </a>
       <ion-list>
 
-        <ion-item ng-show="userSearch" ng-repeat="user in users| filter: userSearch">
+        <ion-item ng-show="userSearch" ng-click="addFriend(user)" ng-repeat="user in users| filter: userSearch">
           {{user}} 
-          <button class= "button button-balanced" ng-click="addFriend(user)">Add!</button>
+         <!--  <button class= "button button-balanced" ng-click="addFriend(user)">Add!</button> -->
         </ion-item>
       </ion-list>
 
@@ -27,7 +27,10 @@
     <ion-list>
       <ion-item ng-repeat="friend in friends" >
         <ion-item ng-click="storeId(friend.id)"> {{friend.username}}
-        <button class="button button-calm" ng-click="removeFriend(friend.id)">Remove from Friends</button>
+      <!--   <button class="button button-calm" ng-click="removeFriend(friend.id)">Remove from Friends</button> -->
+        <ion-option-button style="background:red;color:white;" class="button-assertive" ng-click="removeFriend(friend.id)">
+          Delete
+          </ion-option-button>
         </ion-item>
       </ion-item>
       <ion-item ng-show= "storedId" ng-repeat="which in friendsWhiches |filter : storedId" ng-click="goToWhich(which._id)">

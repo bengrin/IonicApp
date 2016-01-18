@@ -20,7 +20,7 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
 
   //Submission of Which with input details
   $scope.submit = function() {
-
+    console.log('$scope friends only', $scope.data.friendsOnly); 
     var which = {
       question: $scope.data.question,
       createdBy: window.localStorage.getItem('which.userToken'),
@@ -31,7 +31,7 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
       friendsOnly: $scope.data.friendsOnly
     }
 
-    WhichFactory.submit(which);
+    // WhichFactory.submit(which);
 
     //Landing page after submission
     $state.go('app.whichesByUser');
