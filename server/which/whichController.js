@@ -10,39 +10,7 @@ module.exports = {
 
   /* * * * * * * * * * * * GET HANDLERS * * * * * * * * * * * * */
 
-  /*        Route Handler - GET /api/which/byFriends
 
-        * Expects an userID parameter in the query string.
-            Optional query parameters:
-
-               Parameter       Value         Description
-                 resultLimit     [number]      Number of results to return.
-                                               Default value: 1
-                 createdBy       [userID]      Only return Whiches created by this user.
-                                               Default: not used in query unless specified
-
-        * Responds with the oldest Which, created by friends, not
-          yet judged by userID. Optional query parameters change results accordingly.
-
-  */
-
-
-
-  // getWhichByFriends : function (req, res, next) {
-  //   var dbQuery = buildDefaultWhichQuery(req);
-  //   var resultLimit  = Number(req.query.resultLimit) || 1;
-
-  //   Which.find(dbQuery)
-  //     .sort({createdAt:1}) // oldest first
-  //     .limit(resultLimit)
-  //     .then(function(dbResults){
-  //       res.json( defaultWhichProps(dbResults) );
-  //     })
-  //     .catch(function(err){
-  //       throw err;
-  //     });
-
-  // },
 
 
   /*        Route Handler - GET /api/which
