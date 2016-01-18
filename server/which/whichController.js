@@ -79,15 +79,20 @@ module.exports = {
           Optional query parameters change results accordingly.
   */
   getWhichByTag : function (req, res, next) {
+    // console.log('req in getWhichByTag', req); 
     var dbQuery = buildDefaultWhichQuery(req);
+    console.log('dbquery get which by tag', dbQuery)
     var resultLimit = Number(req.query.resultLimit) || 1;
 
     dbQuery.tags = req.body.tagName;
+    // dbQuery.friendsOnly= false; 
+        console.log('dbquery get which by tag', dbQuery)
 
     Which.find(dbQuery)
       .limit(resultLimit)
       .sort({createdAt:1}) // oldest first
       .then(function(dbResults){
+        console.log('dbResults', dbResults);
         res.json( defaultWhichProps(dbResults) );
       })
       .catch(function(err){
@@ -147,7 +152,8 @@ module.exports = {
       tags: data.tags,
       type : data.type,
       thingA : data.thingA, // either string of text, or url to resource
-      thingB : data.thingB
+      thingB : data.thingB,
+      friendsOnly: data.friendsOnly
     };
 
     Which(newWhich).save()
