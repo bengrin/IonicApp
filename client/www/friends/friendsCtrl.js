@@ -18,7 +18,6 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
 
 
   $scope.addFriend= function (friendName) {
-    $scope.userSearch= null; 
     User.addFriend(friendName)
       .then(function (response) {
         if(response.status===200){ 
