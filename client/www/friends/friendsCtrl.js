@@ -6,7 +6,9 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
   $scope.userSearch=""; 
 
   $scope.message=''; 
-
+  $scope.$on('$ionicView.afterEnter', function() {
+    $scope.getFriendsWiches()
+  });
   var getPotentialFriends= function () {
     User.getUsers()
       .then(function (response) {
