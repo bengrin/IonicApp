@@ -55,7 +55,6 @@ angular.module('which.factory', [])
    * Sends an HTTP POST request to /api/which
    **/
   var submit = function(which) {
-    console.log(which);
     return $http.post(serverURI + '/api/which', which)
       .then(function(res) {
         return res.data;
