@@ -107,22 +107,19 @@ module.exports = {
   */
 
   deleteFriend : function(req, res, next){
+
     var userId= {
       _id: req.body.userId
     }
 
-    User.findOneAndUpdate(userId)
-      .then (function (dbResults){
+    User.find(userId) 
+      .then(function (dbResults) {
         if(!dbResults) res.sendStatus(400); //bad request: couldn't delete friend
-        dbResults.friends.some(function (friendId, idx)  {
-          if(String(friendId)=== String(req.body.friendId)) {
-            dbResults.friends.splice(idx,1); 
-            dbResults.save(); 
-            return true;
-          }
-          return false; 
+        dbResults[0].friends.pull(req.body.friendId); 
+        dbResults[0].save(function (err){
+          if(err) res.sendStatus(400); //bad request: couldn't delete friend
+          else  res.sendStatus(200); //friend is now deleted
         })
-        res.sendStatus(200); //friend is now deleted
       })
 
   },
