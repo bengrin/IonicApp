@@ -27,7 +27,8 @@ angular.module('which.controllers.create', ['which.factory', 'ionic.contrib.ui.t
       tags: $scope.data.tags.split(' '),
       type: $scope.data.mediaType.label.toLowerCase(),
       thingA: $scope.data.thingA,
-      thingB: $scope.data.thingB
+      thingB: $scope.data.thingB,
+      friendsOnly: $scope.data.friendsOnly
     }
 
     WhichFactory.submit(which);

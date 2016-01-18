@@ -6,6 +6,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   judgedWhiches: Array,
   joinedOn : { type: Date, default: Date.now },
+  pending: Boolean, 
   friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 

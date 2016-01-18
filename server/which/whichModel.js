@@ -11,7 +11,8 @@ var WhichSchema = new mongoose.Schema({
   thingB : {type: String, default: ''},
   thingAVoteCount : {type: Number, default: 0},
   thingBVoteCount : {type: Number, default: 0},
-  createdAt : { type: Date, default: Date.now }
+  createdAt : { type: Date, default: Date.now },
+  friendsOnly: Boolean
 });
 
 module.exports = mongoose.model('Which', WhichSchema);
