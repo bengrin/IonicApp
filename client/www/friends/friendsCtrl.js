@@ -3,7 +3,7 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
 
 .controller('FriendsCtrl', function($scope, $ionicHistory, $state, User, WhichFactory) {
   $scope.filters = {};
-  $scope.userSearch=null; 
+  $scope.userSearch=""; 
 
   $scope.message=''; 
 
@@ -23,6 +23,8 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
         if(response.status===200){ 
           $scope.message= 'Successfully added!'
         }  
+        $scope.getFriendsWiches(); 
+        $scope.userSearch=""; 
       })
 
   }
@@ -30,7 +32,7 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
   $scope.removeFriend= function (friendId) {
     User.removeFriend(friendId)
       .then(function (response) {
-
+        $scope.getFriendsWiches(); 
       })
 
   }
