@@ -53,12 +53,16 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
   }
 
   $scope.goToWhich = function(id) {
-    console.log('id', id); 
     WhichFactory.getWhichByID(id).then(function(which) {
       console.log(which);
-      $state.go('app.whichInfo', {which: which});
+      $state.go('app.which', {
+        id: which.id,
+        question: which.question,
+        thingA: which.thingA,
+        thingB: which.thingB
+      });
     })
-  }
+  };
 
  
   
