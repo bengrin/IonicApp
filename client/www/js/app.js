@@ -47,7 +47,10 @@ angular.module('which', ['ionic',
 
   //Main app state, contains the logic/views for the menu and login
   //Will be present on EVERY state
-    .state('app', {
+  .state('/', {
+
+  })
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'app/app.html',
@@ -182,7 +185,7 @@ angular.module('which', ['ionic',
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content):|data:image\//);
 

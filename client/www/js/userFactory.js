@@ -7,8 +7,8 @@ angular.module('user.factory', [])
 
 
   // var apiUrl = 'http://whichwhich.herokuapp.com'
-
-  var apiUrl= 'http://localhost:3000'; 
+  var apiUrl = "http://secret-earth-5465.herokuapp.com";
+  // var apiUrl= 'http://localhost:3000'; 
 
 
   /*

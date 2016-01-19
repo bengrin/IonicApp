@@ -9,8 +9,8 @@ angular.module('which.factory', [])
 
 
   // var serverURI = 'http://whichwhich.herokuapp.com';
-  var serverURI = 'http://localhost:3000';
-
+  // var serverURI = 'http://localhost:3000';
+  var serverURI = 'http://secret-earth-5465.herokuapp.com'
 
 
   /*
