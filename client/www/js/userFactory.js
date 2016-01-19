@@ -107,7 +107,7 @@ angular.module('user.factory', [])
    */
 
   var addFriend= function (friend) {
-
+    console.log('friend in user factory', friend) 
     var data= {
       friend: friend,
       userId: window.localStorage['which.userToken']

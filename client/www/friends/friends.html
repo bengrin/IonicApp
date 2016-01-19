@@ -13,7 +13,6 @@
         <input type="text" ng-model="userSearch" placeholder="Username...">
       </a>
       <ion-list>
-
         <ion-item ng-show="userSearch" ng-click="addFriend(user)" ng-repeat="user in users| filter: userSearch">
           {{user}} 
          <!--  <button class= "button button-balanced" ng-click="addFriend(user)">Add!</button> -->

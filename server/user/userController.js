@@ -77,18 +77,24 @@ module.exports = {
       username: req.body.friend
     }
 
+    console.log('user id', userId);
+    console.log('friend in controller', friend); 
     User.findOne(friend)
       .then(function (dbResults){
+        console.log('should find the friend in db', dbResults)
         if(!dbResults) res.sendStatus(400); //bad request: that friend isn't in our db!
         else return dbResults; 
       })
       .then(function(friend){
         User.findOne(userId)
           .then(function (dbResults) {  
+            console.log('should find yourself in db', dbResults); 
             if(dbResults.friends.indexOf(friend._id) === -1) {
               dbResults.friends.push(friend._id);
+              console.log('after adding friend,friends should update: ', dbResults)
               dbResults.save( function (err) {
                 if (err) console.log(err);
+
                 res.sendStatus(200); //great! friend is now saved
               });  
             } else {
