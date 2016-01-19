@@ -7,19 +7,20 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
 
   $scope.message=''; 
   $scope.$on('$ionicView.afterEnter', function() {
-    $scope.getFriendsWiches()
+    $scope.getFriendsWiches(); 
+    getPotentialFriends(); 
   });
   var getPotentialFriends= function () {
     User.getUsers()
       .then(function (response) {
+        console.log($scope.users); 
         $scope.users= response; 
       })
   }
 
-  getPotentialFriends(); 
-
 
   $scope.addFriend= function (friendName) {
+    console.log('friendName', friendName)
     User.addFriend(friendName)
       .then(function (response) {
         if(response.status===200){ 
@@ -27,9 +28,18 @@ angular.module('which.controllers.friends', ['which.factory', 'ionic.contrib.ui.
         }  
         $scope.getFriendsWiches(); 
         $scope.userSearch=""; 
+        // $scope.reloadRoute(); 
+        // $scope.reloadPage(); 
+        
       })
 
   }
+
+  $scope.reloadRoute = function() {
+    $state.reload();
+  };
+
+  $scope.reloadPage = function(){window.location.reload();}
 
   $scope.removeFriend= function (friendId) {
     User.removeFriend(friendId)
